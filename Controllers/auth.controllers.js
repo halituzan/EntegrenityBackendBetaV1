@@ -77,11 +77,11 @@ module.exports.info = async (req, res, next) => {
         const user = await userModel.findById(param);
         console.log(user)
         if (user) {
-        console.log(user)
+          console.log(user)
           res.json(user);
           console.log(user)
         } else {
-        console.log(user)
+          console.log(user)
           res.json({ status: false });
         }
         next();
@@ -111,7 +111,7 @@ module.exports.register = async (req, res, next) => {
     res.cookie("jwt", token, {
       withCredintials: true,
       httpOnly: false,
-      maxAge: maxAge * 1000,
+      maxAge: maxAge * 1000, sameSite: 'none', secure: true
     });
     res.status(201).json({ user: user._id, created: true });
   } catch (error) {
@@ -131,7 +131,7 @@ module.exports.login = async (req, res, next) => {
     res.cookie("jwt", token, {
       withCredintials: true,
       httpOnly: false,
-      maxAge: maxAge * 1000,
+      maxAge: maxAge * 1000, sameSite: 'none', secure: true
     });
     res.status(200).json({ user: user._id, created: true });
   } catch (error) {
