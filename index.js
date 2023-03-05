@@ -9,16 +9,16 @@ const crudRoutes = require("./Routes/crud.routes");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const KnexSessionStore = require('connect-session-knex')(session);
-const store = new KnexSessionStore({
-  tablename: 'session',
-  knex: kx,
-  createtable: false
-});
+// const store = new KnexSessionStore({
+//   tablename: 'session',
+//   knex: kx,
+//   createtable: false
+// });
 
 const sessionConfig = {
   secret: 'ty hb entegrenity com',
   name: 'Entegrenity',
-  store: store,
+  //store: store,
   resave: false,
   saveUninitialized: false,
   cookie: {
