@@ -1,0 +1,65 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='./style.css')
+  title Entegrenity
+  style.
+    * {
+    transition: all 0.6s;
+    }
+    a {
+    text-decoration: none;
+    color: orangered;
+    }
+    a:hover {
+    color: black;
+    }
+    html {
+    height: 100%;
+    }
+    body {
+    font-family: "Lato", sans-serif;
+    color: #888;
+    margin: 0;
+    }
+    #main {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    }
+    .fof {
+    display: table-cell;
+    vertical-align: middle;
+    }
+    .fof h1 {
+    font-size: 50px;
+    display: inline-block;
+    padding-right: 12px;
+    animation: type 0.5s alternate infinite;
+    }
+    @keyframes type {
+    from {
+    box-shadow: inset -3px 0px 0px #888;
+    }
+    to {
+    box-shadow: inset -3px 0px 0px transparent;
+    }
+    }
+    .contacts img:hover {
+    filter: drop-shadow(0px 0px 3px #888);
+    }
+#main
+  .fof
+    h1 Error 404
+    p
+      | The page you are looking for was not found or you do not have access
+      | to this page. You can contact us using the links below.
+    .contacts
+      a(href='https://github.com/halituzan')  Github 
+      |  |
+      a(href='https://www.linkedin.com/in/halituzan/') Linkedin 
+      |  |
+      a(href='https://twitter.com/halituzan')  Twitter 
