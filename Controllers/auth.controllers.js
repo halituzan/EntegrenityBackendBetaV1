@@ -108,7 +108,7 @@ module.exports.register = async (req, res, next) => {
       groups,
     });
     const token = createToken(user._id);
-    res.cookie("jwt", token, {maxAge: maxAge * 1000, sameSite: 'none', secure: true});
+    res.cookie("jwt", token, {maxAge: maxAge * 1000, SameSite: 'none', secure: true});
     res.status(201).json({ user: user._id, created: true });
   } catch (error) {
     const errors = handleErrors(error);
@@ -124,7 +124,7 @@ module.exports.login = async (req, res, next) => {
     const token = createToken(user._id);
     console.log(token);
 
-    res.cookie("jwt", token, {maxAge: maxAge * 1000,sameSite: 'none',secure: true});
+    res.cookie("jwt", token, {maxAge: maxAge * 1000,SameSite: 'none',secure: true});
     res.status(200).json({ user: user._id, created: true });
   } catch (error) {
     console.log(error);
