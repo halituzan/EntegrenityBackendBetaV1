@@ -36,8 +36,8 @@ app.use(
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 );
-app.use('/tyapi', createProxyMiddleware({ target: 'https://api.trendyol.com', changeOrigin: true }));
-app.use('/entegrenityb1api', createProxyMiddleware({ target: 'https://entegrenity-api-b1.onrender.com/apiv1/', changeOrigin: true }));
+// app.use('/tyapi', createProxyMiddleware({ target: 'https://api.trendyol.com', changeOrigin: true }));
+// app.use('/entegrenityb1api', createProxyMiddleware({ target: 'https://entegrenity-api-b1.onrender.com/apiv1/', changeOrigin: true }));
 
 app.use(cookieParser());
 app.use(express.json());
