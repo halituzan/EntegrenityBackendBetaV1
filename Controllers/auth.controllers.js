@@ -37,34 +37,10 @@ const handleErrors = (err) => {
   return errors;
 };
 
-// module.exports.info = async (req, res, next) => {
-//   const token = req.cookies.jwt;
-//   const param = req.params.id;
-//   if (token) {
-//     userModel
-//       .findById(param)
-//       .then((data) => {
-//         res.json(data);
-//       })
-//       .catch((err) => {
-//         res.json(err.message);
-//       });
-//   } else {
-//     res.json({ status: false });
-//     console.log(param)
-//   }
-// };
-
 module.exports.info = async (req, res, next) => {
   const token = req.cookies.jwt;
   const param = req.params.id;
-  console.log("param")
-  // const user = await userModel.findById(param);
-  // if (user) {
-  //   res.json(user);
-  // } else {
-  //   res.json({ status: false });
-  // }
+
   if (token) {
     console.log(token)
 
@@ -108,7 +84,7 @@ module.exports.register = async (req, res, next) => {
       groups,
     });
     const token = createToken(user._id);
-    res.cookie("jwt", token, { maxAge: maxAge * 1000, SameSite: 'none', secure: true,domain:"http://kampimi.site" });
+    res.cookie("jwt", token, { maxAge: maxAge * 1000});
     res.status(201).json({ user: user._id, created: true });
   } catch (error) {
     const errors = handleErrors(error);
@@ -124,7 +100,7 @@ module.exports.login = async (req, res, next) => {
     const token = createToken(user._id);
     console.log(token);
 
-    res.cookie("jwt", token, { maxAge: maxAge * 1000, SameSite: 'none', secure: true, domain:"http://kampimi.site" });
+    res.cookie("jwt", token, { maxAge: maxAge * 1000});
     res.status(200).json({ user: user._id, created: true });
   } catch (error) {
     console.log(error);
