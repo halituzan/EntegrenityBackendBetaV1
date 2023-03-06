@@ -1,5 +1,4 @@
 const express = require("express");
-// var session = require('express-session')
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
@@ -8,23 +7,8 @@ const authRoutes = require("./Routes/auth.routes");
 const crudRoutes = require("./Routes/crud.routes");
 const app = express();
 const PORT = process.env.PORT || 4000;
-//const KnexSessionStore = require('connect-session-knex')(session);
-// const store = new KnexSessionStore({
-//   tablename: 'session',
-//   knex: kx,
-//   createtable: false
-// });
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-const sessionConfig = {
-  secret: 'ty hb entegrenity com',
-  name: 'Entegrenity',
-  //store: store,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    sameSite: 'none', // THIS is the config you are looing for.
-  }
-};
 
 app.listen(PORT, () => {
   console.log("server Started on PORT", PORT);
@@ -52,12 +36,8 @@ app.use(
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 );
-// if (process.env.NODE_ENV === 'production') {
-//   app.set('trust proxy', 1); // trust first proxy
-//   sessionConfig.cookie.secure = true; // serve secure cookies
-// }
-
-// app.use(session(sessionConfig))
+app.use('/tyapi', createProxyMiddleware({ target: 'https://api.trendyol.com', changeOrigin: true }));
+app.use('/entegrenityb1api', createProxyMiddleware({ target: 'https://entegrenity-api-b1.onrender.com/apiv1/', changeOrigin: true }));
 
 app.use(cookieParser());
 app.use(express.json());
